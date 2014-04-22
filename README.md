@@ -3,6 +3,22 @@ pdist
 
 Ruby gem to compare permutations using distance measures/metrics.
 
+Install and pre-requisites
+----
+
+```
+
+gem install pdist
+
+```
+
+OR download [here](http://rubygems.org/gems/pdist)
+
+You must also have the [diff-lcs](http://rubygems.org/gems/diff-lcs) gem installed, to use the **longest common subsequence** method (see below).
+
+Usage
+----
+
 Each method of the PDist class takes as input, two arrays of the same unique objects (i.e. both are the same array ordered differently).
 
 The two input arrays are permutations of eachother, and the chosen method calculates the 'distance' between these permutations, according to a certain measure/metric.
@@ -22,8 +38,7 @@ This output value is the distance between the permutations as attributed by the 
 
 Output values closer to **0.0** indicate closely matching permutations, where **0.0** is a perfect match, and **1.0** is the maximum possible distance.
 
-Deviation distance
-----
+### Deviation distance
 
 ```
 
@@ -31,8 +46,7 @@ PDist.deviation(a,b)
 
 ```
 
-Square deviation distance
--------
+### Square deviation distance
 
 ```
 
@@ -40,8 +54,7 @@ PDist.square(a,b)
 
 ```
 
-Hamming distance
----
+### Hamming distance
 
 ```
 
@@ -49,8 +62,7 @@ PDist.hamming(a,b)
 
 ```
 
-The R distance (reversed)
-----
+### The R distance (reversed)
 
 ```
 
@@ -58,8 +70,7 @@ PDist.rdist(a,b)
 
 ```
 
-The longest common sub-sequence
-----
+### The longest common sub-sequence
 
 ```
 
@@ -67,11 +78,11 @@ PDist.lcs(a,b)
 
 ```
 
-Kendall's tau
------
+### Kendall's tau
 
 ```
 
 PDist.kendalls_tau(a,b)
 
 ```
+
