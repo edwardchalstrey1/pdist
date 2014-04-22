@@ -86,3 +86,10 @@ PDist.kendalls_tau(a,b)
 
 ```
 
+Mathematical descriptions of methods
+----
+
+Each of the methods in the PDist class is described mathematically by [Sevaux and Kenneth (2005)](http://www.researchgate.net/publication/228565454_Permutation_distance_measures_for_memetic_algorithms_with_population_management/file/d912f50a9de08542ff.pdf)
+
+The authors also describe several other distance metrics for permutation comparison. Forkers who wish to implement these methods or others are most welcome.
+
