@@ -2,7 +2,7 @@
 require_relative 'lib/pdist'
 require 'test/unit'
 
-class TestRearrangementScore < Test::Unit::TestCase
+class TestPDist < Test::Unit::TestCase
 
 	A = %w(a b c)
 	C = A.reverse
