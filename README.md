@@ -8,9 +8,7 @@ Install and pre-requisites
 ----
 
 ```
-
 gem install pdist
-
 ```
 
 OR download [here](http://rubygems.org/gems/pdist)
@@ -26,11 +24,9 @@ The two input arrays are permutations of eachother, and the chosen method calcul
 
 **For example** take these two permutations of the integers 1..5:
 
-```
-
+```ruby
 a = [1,2,3,4,5]
 b = [2,1,3,5,4]
-
 ```
 
 Each of the methods below gives as output a float of value x, where **0.0 <= x <= 1.0**
@@ -41,50 +37,38 @@ Output values closer to **0.0** indicate closely matching permutations, where **
 
 ### Deviation distance
 
-```
-
+```ruby
 PDist.deviation(a,b)
-
 ```
 
 ### Square deviation distance
 
-```
-
+```ruby
 PDist.square(a,b)
-
 ```
 
 ### Hamming distance
 
-```
-
+```ruby
 PDist.hamming(a,b)
-
 ```
 
 ### The R distance (reversed)
 
-```
-
+```ruby
 PDist.rdist(a,b)
-
 ```
 
 ### The longest common sub-sequence
 
-```
-
+```ruby
 PDist.lcs(a,b)
-
 ```
 
 ### Kendall's tau
 
-```
-
+```ruby
 PDist.kendalls_tau(a,b)
-
 ```
 
 Mathematical descriptions of methods
