@@ -37,8 +37,8 @@ class PDist
 	def self.hamming(original, permutation)
 		x = 0
 		hds = [] # hamming distances
-		permutation.each do |frag_id| # hamming distances are 0 when object's have same index in original and permutation, and 1 when not
-			if frag_id == original[x]
+		permutation.each do |object| # hamming distances are 0 when object's have same index in original and permutation, and 1 when not
+			if object == original[x]
 				hds << 0
 			else
 				hds << 1
@@ -77,11 +77,11 @@ class PDist
 		n = permutation.length
 		x = 0
 		kt = []
-		n.times do
+		original.each do |original_x| # for each of the objects in original...
 			y = 0
-			n.times do 
-				if original[x] < original[y] && permutation[x] > permutation[y]
-					kt << 1
+			n.times do # ... iterate over both original and permutation
+				if original_x < original[y] && permutation[x] > permutation[y] # every time object y comes before object x in permutation, where it comes after in original... 
+					kt << 1 # ... 1 is added
 				else
 					kt << 0
 				end
