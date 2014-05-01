@@ -1,0 +1,10 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    diff-lcs (1.2.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  diff-lcs
