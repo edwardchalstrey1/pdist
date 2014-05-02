@@ -1,5 +1,5 @@
 #encoding: utf-8
-require 'pdist'
+require_relative '../lib/pdist'
 require 'test/unit'
 
 class TestPDist < Test::Unit::TestCase
