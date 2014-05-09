@@ -1,6 +1,7 @@
 pdist
 =====
 [![Gem Version](https://badge.fury.io/rb/pdist.svg)](http://badge.fury.io/rb/pdist)
+[![Build Status](https://drone.io/github.com/edwardchalstrey1/pdist/status.png)](https://drone.io/github.com/edwardchalstrey1/pdist/latest)
 
 Ruby gem to compare permutations using distance measures/metrics.
 
