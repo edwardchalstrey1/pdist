@@ -38,9 +38,7 @@ class PDist
 		x = 0
 		hds = [] # hamming distances
 		permutation.each do |object| # hamming distances are 0 when object's have same index in original and permutation, and 1 when not
-			if object == original[x]
-				hds << 0
-			else
+			if object != original[x]
 				hds << 1
 			end
 			x+=1
@@ -56,9 +54,7 @@ class PDist
 		n = permutation.length
 		(n - 1).times do 
 			y = permutation.index(original[x])
-			if original[x+1] == permutation[y+1]
-				r << 0
-			else
+			if original[x+1] != permutation[y+1]
 				r << 1
 			end
 			x+=1
@@ -81,8 +77,6 @@ class PDist
 				# every time object y comes before object x in permutation, where it comes after in original... 
 				if original.index(x) < original.index(y) && permutation.index(x) > permutation.index(y)
 					kt << 1 # ... 1 is added
-				else
-					kt << 0
 				end
 			end
 		end
