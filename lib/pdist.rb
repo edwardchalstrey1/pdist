@@ -73,21 +73,18 @@ class PDist
 	end
 
 	# Returns float of the kendall's tau distance between original and permutation, normalized between 0.0 and 1.0
-	def self.kendalls_tau(original, permutation)
+	def self.kendalls_tau(original, permutation) # TODO edit the if statement to work with any type of object
 		n = permutation.length
-		x = 0
 		kt = []
-		original.each do |original_x| # for each of the objects in original...
-			y = 0
-			n.times do # ... iterate over both original and permutation
-				if original_x < original[y] && permutation[x] > permutation[y] # every time object y comes before object x in permutation, where it comes after in original... 
+		original.each do |x| # for each of the objects in original...
+			permutation.each do |y| # ... iterate over the objects in permutation
+				# every time object y comes before object x in permutation, where it comes after in original... 
+				if original.index(x) < original.index(y) && permutation.index(x) > permutation.index(y)
 					kt << 1 # ... 1 is added
 				else
 					kt << 0
 				end
-				y+=1
 			end
-			x+=1
 		end
 		s = kt.inject(:+) # the number of pairwise adjacent permutations required to transform original into permutation
 		return 2 * (s.to_f / (n**2 - n).to_f) # normalized kendall's tau distance
