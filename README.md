@@ -36,6 +36,8 @@ This output value is the distance between the permutations as attributed by the 
 
 Output values closer to **0.0** indicate closely matching permutations, where **0.0** is a perfect match, and **1.0** is the maximum possible distance.
 
+**To get the un-normalized distance for each of these metrics, simply append ``_raw`` to any of the methods below (before the arguments)**
+
 ### Deviation distance
 
 ```ruby
