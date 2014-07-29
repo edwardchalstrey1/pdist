@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="pdist : Ruby gem to compare permutations using distance measures/metrics" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>pdist</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/edwardchalstrey1/pdist">View on GitHub</a>
+
+          <h1 id="project_title">pdist</h1>
+          <h2 id="project_tagline">Ruby gem to compare permutations using distance measures/metrics</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/edwardchalstrey1/pdist/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/edwardchalstrey1/pdist/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="pdist" class="anchor" href="#pdist"><span class="octicon octicon-link"></span></a>pdist</h1>
+
+<p>Ruby gem to compare permutations using distance measures/metrics.</p>
+
+<h2>
+<a name="install-and-pre-requisites" class="anchor" href="#install-and-pre-requisites"><span class="octicon octicon-link"></span></a>Install and pre-requisites</h2>
+
+<pre><code>gem install pdist
+</code></pre>
+
+<p>OR download <a href="http://rubygems.org/gems/pdist">here</a></p>
+
+<p>You must also have the <a href="http://rubygems.org/gems/diff-lcs">diff-lcs</a> gem installed, to use the <strong>longest common subsequence</strong> method (see below).</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Each method of the PDist class takes as input, two arrays of the same unique objects (i.e. both are the same array ordered differently).</p>
+
+<p>The two input arrays are permutations of eachother, and the chosen method calculates the 'distance' between these permutations, according to a certain measure/metric.</p>
+
+<p><strong>For example</strong> take these two permutations of the integers 1..5:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="o">]</span>
+</pre></div>
+
+<p>Each of the methods below gives as output a float of value x, where <strong>0.0 &lt;= x &lt;= 1.0</strong></p>
+
+<p>This output value is the distance between the permutations as attributed by the metric, normalized in the range <strong>0.0 to 1.0</strong></p>
+
+<p>Output values closer to <strong>0.0</strong> indicate closely matching permutations, where <strong>0.0</strong> is a perfect match, and <strong>1.0</strong> is the maximum possible distance.</p>
+
+<p><strong>To get the un-normalized distance for each of these metrics, simply append <code>_raw</code> to any of the methods below (before the arguments)</strong></p>
+
+<h3>
+<a name="deviation-distance" class="anchor" href="#deviation-distance"><span class="octicon octicon-link"></span></a>Deviation distance</h3>
+
+<div class="highlight highlight-ruby"><pre><span class="no">PDist</span><span class="o">.</span><span class="n">deviation</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="square-deviation-distance" class="anchor" href="#square-deviation-distance"><span class="octicon octicon-link"></span></a> Square deviation distance</h3>
+
+<div class="highlight highlight-ruby"><pre><span class="no">PDist</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="hamming-distance" class="anchor" href="#hamming-distance"><span class="octicon octicon-link"></span></a>Hamming distance</h3>
+
+<div class="highlight highlight-ruby"><pre><span class="no">PDist</span><span class="o">.</span><span class="n">hamming</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="the-r-distance-reversed" class="anchor" href="#the-r-distance-reversed"><span class="octicon octicon-link"></span></a>The R distance (reversed)</h3>
+
+<div class="highlight highlight-ruby"><pre><span class="no">PDist</span><span class="o">.</span><span class="n">rdist</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="the-longest-common-sub-sequence" class="anchor" href="#the-longest-common-sub-sequence"><span class="octicon octicon-link"></span></a>The longest common sub-sequence</h3>
+
+<div class="highlight highlight-ruby"><pre><span class="no">PDist</span><span class="o">.</span><span class="n">lcs</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="kendalls-tau" class="anchor" href="#kendalls-tau"><span class="octicon octicon-link"></span></a>Kendall's tau</h3>
+
+<div class="highlight highlight-ruby"><pre><span class="no">PDist</span><span class="o">.</span><span class="n">kendalls_tau</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+<h2>
+<a name="mathematical-descriptions-of-methods" class="anchor" href="#mathematical-descriptions-of-methods"><span class="octicon octicon-link"></span></a>Mathematical descriptions of methods</h2>
+
+<p>Each of the methods in the PDist class is described mathematically by <a href="http://www.researchgate.net/publication/228565454_Permutation_distance_measures_for_memetic_algorithms_with_population_management/file/d912f50a9de08542ff.pdf">Sevaux and Kenneth (2005)</a></p>
+
+<p>The authors also describe several other distance metrics for permutation comparison. Forkers who wish to implement these methods or others are most welcome.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">pdist maintained by <a href="https://github.com/edwardchalstrey1">edwardchalstrey1</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
