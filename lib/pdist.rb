@@ -84,13 +84,13 @@ class PDist
 
 	# Returns float of the longest common sub-sequence between original and permutation
 	def self.lcs_raw(original, permutation)
-		return Diff::LCS.LCS(original, permutation) # diff-lcs gem used to calculate longest common sub-sequence
+		return Diff::LCS.LCS(original, permutation).length # diff-lcs gem used to calculate longest common sub-sequence
 	end
 
 	# Returns float of the longest common sub-sequence between original and permutation, normalized between 0.0 and 1.0
 	def self.lcs(original, permutation)
 		lcs = lcs_raw(original, permutation)	
-		return (permutation.length - lcs.length).to_f / (permutation.length - 1).to_f # normalized: dividing by longest possible common sub-sequence
+		return (permutation.length - lcs).to_f / (permutation.length - 1).to_f # normalized: dividing by longest possible common sub-sequence
 	end
 
 	# Returns float of the kendall's tau distance between original and permutation
@@ -104,7 +104,12 @@ class PDist
 				end
 			end
 		end
-		return kt.inject(:+) # the number of pairwise adjacent permutations required to transform original into permutation
+		tau = kt.inject(:+)
+		unless tau == nil
+			return kt.inject(:+) # the number of pairwise adjacent permutations required to transform original into permutation
+		else
+			return 0
+		end
 	end
 
 	# Returns float of the kendall's tau distance between original and permutation, normalized between 0.0 and 1.0
